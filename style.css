@@ -10,6 +10,7 @@ body {
   flex-direction: column;
   align-items: center;
   width: 100vw;
+  min-width: 300px;
   height: 100vh;
   overflow-x: hidden;
   background: url('./assets/background.png') no-repeat center center fixed, #7CA8FF;
@@ -64,6 +65,7 @@ button {
   display: flex;
   flex-direction: column;
   filter: drop-shadow(0 0 14px #000);
+  margin-bottom: 16px;
 }
 
 .row {
@@ -86,7 +88,7 @@ button {
   background: url('./assets/cell.png') no-repeat center center, #2C2C2C;
   background-size: cover;
   image-rendering: pixelated;
-  box-shadow: inset 2px 2px 2px 0px rgba(0,0,0,0.75), inset -2px -2px 2px 0px rgba(255, 255, 255, 0.75);
+  box-shadow: inset 3px 3px 3px 0px rgba(0,0,0,0.75);
   color: #fff;
   cursor: pointer;
 }
@@ -134,15 +136,23 @@ button:hover::after,
 	src: url('assets/seven.ttf');
 }
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 860px) {
   .cell {
     font-size: 14px;
     letter-spacing: 0px;
   }
 }
 
-@media screen and (max-width: 560px) {
+@media screen and (max-width: 580px) {
   .cell {
-    font-size: 12px;
+    font-size: 11px;
+    padding: 5px;
+    width: calc(20vw - 14px);
+    height: calc(20vw - 14px);
+  }
+
+  .grid-header {
+    margin-left: 16px;
+    margin-right: 16px;
   }
 }
