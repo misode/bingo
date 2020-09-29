@@ -87,15 +87,27 @@ button {
   padding: 10px;
   background: url('./assets/cell.png') no-repeat center center, #2C2C2C;
   background-size: cover;
+  image-rendering: crisp-edges;
   image-rendering: pixelated;
   box-shadow: inset 3px 3px 3px 0px rgba(0,0,0,0.75);
   color: #fff;
   cursor: pointer;
+  user-select: none;
 }
 
 .cell.checked {
- background-image: url('./assets/cell_checked.png');
- color: #bbb;
+  background-image: url('./assets/cell_checked.png');
+  color: #bbb;
+}
+
+.cell.free-space {
+  background-image: url('./assets/cell_checked.png');
+  color: #d0ff79;
+  cursor: default;
+}
+
+.cell.free-space::after {
+  content: none;
 }
 
 button::after,

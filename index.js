@@ -1,27 +1,30 @@
-const goals = [
+const essentialGoals = [
+  'Fletching table use',
+  'A Minecraft related song',
+  'History lesson (again)',
+  'Fake laughing',
+  'New new combat update',
+  'Cave update',
+  'Board game talk',
+  'Animated villagers',
+  'Someone asks if there are capes',
+  'Colab with other brand',
+]
+
+const optionalGoals = [
   '"We apologize for the inconvenience this year..."',
   '"We\'re all in this together"',
   '"Stay safe!"',
   'NO mention of the word "corona" within 30 minutes',
-  'Fletching table use',
   'Marketplace victory lap',
   'Non-Mojang creators webcam montage',
-  'A Minecraft related song',
-  'History lesson (again)',
   '*awkward silence*',
   'People playing on their phone center-stage',
-  'Fake laughing',
   'New Dungeons DLC',
-  'New new combat update',
   'A joke about masks',
-  'Cave update',
-  'Board game talk',
-  'Animated villagers',
   'Subtle Minecraft merch mention',
-  'Someone asks if there are capes',
   'Dab from staff',
   'Among Us reference',
-  'Colab with other brand',
   'Fake audience',
   'Big Bedrock map',
 ]
@@ -44,7 +47,7 @@ function fisherYates(originalArray) {
 }
 
 function initGrid() {
-  const shuffledGoals = fisherYates(goals).slice(0, 25)
+  const shuffledGoals = fisherYates(essentialGoals.concat(fisherYates(optionalGoals)).slice(0, 24))
 
   const grid = document.querySelector('.grid')
   grid.innerHTML = ''
@@ -53,9 +56,16 @@ function initGrid() {
     grid.appendChild(row)
     row.className = 'row'
     for (let x = 0; x < 5; x += 1) {
-      const i = x + 5*y
+      let i = x + 5*y
       const cell = document.createElement('div')
       row.appendChild(cell)
+      if (i === 12) {
+        cell.className = 'cell free-space'
+        cell.innerHTML = 'FREE SPACE<br><BR>Jeb is awkward'
+        continue;
+      } else if (i > 12) {
+        i -= 1;
+      }
       cell.className = checked[i] ? 'cell checked' : 'cell'
       cell.textContent = shuffledGoals[i]
       cell.addEventListener('click', () => {
