@@ -14,6 +14,9 @@ body {
   overflow-x: hidden;
   background: url('./assets/background.png') no-repeat center center fixed, #7CA8FF;
   background-size: cover;
+  font-family: 'seven', sans-serif;
+  font-size: 110%;
+  letter-spacing: 1px;
 }
 
 header {
@@ -22,12 +25,39 @@ header {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 30px;
+  padding-top: 30px;
 }
 
 header img {
   max-width: 70%;
   filter: drop-shadow(0 0 14px #000);
+}
+
+.grid-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  filter: drop-shadow(0 0 4px #000);
+}
+
+button {
+  display: block;
+  position: relative;
+  padding: 7px;
+  background: url('./assets/button.png') no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  letter-spacing: inherit;
+  font: inherit;
+  color: #fff;
+  border: 2px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.grid-header span {
+  color: #fff;
 }
 
 .grid {
@@ -58,9 +88,6 @@ header img {
   image-rendering: pixelated;
   box-shadow: inset 2px 2px 2px 0px rgba(0,0,0,0.75), inset -2px -2px 2px 0px rgba(255, 255, 255, 0.75);
   color: #fff;
-  letter-spacing: 1px;
-  font-family: 'seven', sans-serif;
-  font-size: 110%;
   cursor: pointer;
 }
 
@@ -95,31 +122,6 @@ button:hover::after,
 
 .cell:not(:last-child) {
   border-right: var(--grid-border);
-}
-
-.grid-actions {
-  display: flex;
-  margin: 16px 0 16px -2px;
-  filter: drop-shadow(0 0 4px #000);
-}
-
-.grid-actions button {
-  display: block;
-  position: relative;
-  padding: 7px;
-  background: url('./assets/button.png') no-repeat;
-  background-size: cover;
-  image-rendering: pixelated;
-  font-family: 'seven', sans-serif;
-  font-size: 110%;
-  color: #fff;
-  border: 2px solid #000;
-  outline: none;
-  cursor: pointer;
-}
-
-.grid-actions button:not(:last-child) {
-  margin-right: 8px;
 }
 
 @font-face {

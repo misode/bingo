@@ -24,7 +24,7 @@ const goals = [
   'W',
   'X',
   'Y',
-  'Z'
+  'Z',
 ]
 
 function generateSeed(length = 12) {
@@ -74,7 +74,7 @@ function setChecked() {
 
 document.querySelector('.new-seed').addEventListener('click', () => {
   Math.seedrandom(generateSeed())
-  checked = new Array().fill(false)
+  checked = new Array(25).fill(false)
   setChecked()
   initGrid()
 })
