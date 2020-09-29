@@ -11,7 +11,7 @@ body {
   align-items: center;
   width: 100vw;
   height: 100vh;
-  overflow: hidden;
+  overflow-x: hidden;
   background: url('./assets/background.png') no-repeat center center fixed, #7CA8FF;
   background-size: cover;
 }
@@ -33,6 +33,7 @@ header img {
 .grid {
   display: flex;
   flex-direction: column;
+  filter: drop-shadow(0 0 14px #000);
 }
 
 .row {
@@ -68,6 +69,7 @@ header img {
  color: #bbb;
 }
 
+button::after,
 .cell::after {
   content: '';
   position: absolute;
@@ -78,6 +80,7 @@ header img {
   opacity: 0;
 }
 
+button:hover::after,
 .cell:hover::after {
   opacity: 1;
 }
@@ -92,6 +95,31 @@ header img {
 
 .cell:not(:last-child) {
   border-right: var(--grid-border);
+}
+
+.grid-actions {
+  display: flex;
+  margin: 16px 0 16px -2px;
+  filter: drop-shadow(0 0 4px #000);
+}
+
+.grid-actions button {
+  display: block;
+  position: relative;
+  padding: 7px;
+  background: url('./assets/button.png') no-repeat;
+  background-size: cover;
+  image-rendering: pixelated;
+  font-family: 'seven', sans-serif;
+  font-size: 110%;
+  color: #fff;
+  border: 2px solid #000;
+  outline: none;
+  cursor: pointer;
+}
+
+.grid-actions button:not(:last-child) {
+  margin-right: 8px;
 }
 
 @font-face {

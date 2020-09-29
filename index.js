@@ -44,27 +44,44 @@ function fisherYates(originalArray) {
   return array;
 }
 
+function initGrid() {
+  const shuffledGoals = fisherYates(goals).slice(0, 25)
+
+  const grid = document.querySelector('.grid')
+  grid.innerHTML = ''
+  for (let y = 0; y < 5; y += 1) {
+    const row = document.createElement('div')
+    grid.appendChild(row)
+    row.className = 'row'
+    for (let x = 0; x < 5; x += 1) {
+      const i = x + 5*y
+      const cell = document.createElement('div')
+      row.appendChild(cell)
+      cell.className = checked[i] ? 'cell checked' : 'cell'
+      cell.textContent = shuffledGoals[i]
+      cell.addEventListener('click', () => {
+        checked[i] = !checked[i]
+        cell.className = checked[i] ? 'cell checked' : 'cell'
+        setChecked()
+      })
+    }
+  }
+}
+
+function setChecked() {
+  localStorage.setItem('minecraftlive.checked', checked.map(e => e ? '1' : '0').join(''))
+}
+
+document.querySelector('.new-seed').addEventListener('click', () => {
+  Math.seedrandom(generateSeed())
+  checked = new Array().fill(false)
+  setChecked()
+  initGrid()
+})
+
 Math.seedrandom(localStorage.getItem('minecraftlive.seed') ?? generateSeed())
-const shuffledGoals = fisherYates(goals).slice(0, 25)
 
 const checkedString = localStorage.getItem('minecraftlive.checked') ?? '0'.repeat(25)
 let checked = checkedString.split('').map(c => c !== '0')
 
-const grid = document.querySelector('.grid')
-for (let y = 0; y < 5; y += 1) {
-  const row = document.createElement('div')
-  grid.appendChild(row)
-  row.className = 'row'
-  for (let x = 0; x < 5; x += 1) {
-    const i = x + 5*y
-    const cell = document.createElement('div')
-    row.appendChild(cell)
-    cell.className = checked[i] ? 'cell checked' : 'cell'
-    cell.textContent = shuffledGoals[i]
-    cell.addEventListener('click', () => {
-      checked[i] = !checked[i]
-      cell.className = checked[i] ? 'cell checked' : 'cell'
-      localStorage.setItem('minecraftlive.checked', checked.map(e => e ? '1' : '0').join(''))
-    })
-  }
-}
+initGrid()
