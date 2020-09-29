@@ -127,11 +127,6 @@ button:hover::after,
 }
 
 @font-face {
-	font-family: minecrafter;
-	src: url('assets/Minecrafter_Alt.ttf');
-}
-
-@font-face {
 	font-family: seven;
 	src: url('assets/seven.ttf');
 }
