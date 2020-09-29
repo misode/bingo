@@ -15,6 +15,7 @@ const optionalGoals = [
   '"We apologize for the inconvenience this year..."',
   '"We\'re all in this together"',
   '"Stay safe!"',
+  '"In these hard / troublesome times..."',
   'NO mention of the word "corona" within 30 minutes',
   'Marketplace victory lap',
   'Non-Mojang creators webcam montage',
@@ -27,6 +28,8 @@ const optionalGoals = [
   'Among Us reference',
   'Fake audience',
   'Big Bedrock map',
+  'Lights go out, unplanned',
+  'Someone on camera not being "supposed to"',
 ]
 
 function generateSeed(length = 12) {
@@ -90,7 +93,7 @@ function setChecked() {
 
 document.querySelector('.new-seed').addEventListener('click', () => {
   Math.seedrandom(generateSeed())
-  checked = new Array(25).fill(false)
+  checked = new Array(24).fill(false)
   setChecked()
   ga('send', 'event', 'Grid', 'reset')
   initGrid()
@@ -98,7 +101,7 @@ document.querySelector('.new-seed').addEventListener('click', () => {
 
 Math.seedrandom(localStorage.getItem('minecraftlive.seed') ?? generateSeed())
 
-const checkedString = localStorage.getItem('minecraftlive.checked') ?? '0'.repeat(25)
+const checkedString = localStorage.getItem('minecraftlive.checked') ?? '0'.repeat(24)
 let checked = checkedString.split('').map(c => c !== '0')
 
 initGrid()
