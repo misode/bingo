@@ -8,6 +8,7 @@
   m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
   })(window,document,'script','https://www.google-analytics.com/analytics.js','ga');
   ga('create', 'UA-73024255-4', 'auto');
+  ga('set', 'metric1', ((localStorage.getItem('minecraftlive.checked') ?? '').match(/1/g)||[]).length);
   ga('send', 'pageview');
   </script>
   <!-- End Google Analytics -->

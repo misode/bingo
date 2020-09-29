@@ -63,6 +63,7 @@ function initGrid() {
         checked[i] = !checked[i]
         cell.className = checked[i] ? 'cell checked' : 'cell'
         setChecked()
+        ga('send', 'event', 'Grid', 'toggle-cell')
       })
     }
   }
@@ -77,6 +78,7 @@ document.querySelector('.new-seed').addEventListener('click', () => {
   Math.seedrandom(generateSeed())
   checked = new Array(25).fill(false)
   setChecked()
+  ga('send', 'event', 'Grid', 'reset')
   initGrid()
 })
 
@@ -84,6 +86,5 @@ Math.seedrandom(localStorage.getItem('minecraftlive.seed') ?? generateSeed())
 
 const checkedString = localStorage.getItem('minecraftlive.checked') ?? '0'.repeat(25)
 let checked = checkedString.split('').map(c => c !== '0')
-setChecked()
 
 initGrid()
