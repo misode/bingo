@@ -60,8 +60,8 @@ function initGrid() {
       cell.className = checked[i] ? 'cell checked' : 'cell'
       cell.textContent = shuffledGoals[i]
       cell.addEventListener('click', () => {
-        cell.className = checked[i] ? 'cell checked' : 'cell'
         checked[i] = !checked[i]
+        cell.className = checked[i] ? 'cell checked' : 'cell'
         setChecked()
       })
     }
