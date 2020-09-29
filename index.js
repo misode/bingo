@@ -60,8 +60,8 @@ function initGrid() {
       cell.className = checked[i] ? 'cell checked' : 'cell'
       cell.textContent = shuffledGoals[i]
       cell.addEventListener('click', () => {
-        checked[i] = !checked[i]
         cell.className = checked[i] ? 'cell checked' : 'cell'
+        checked[i] = !checked[i]
         setChecked()
       })
     }
@@ -70,6 +70,7 @@ function initGrid() {
 
 function setChecked() {
   localStorage.setItem('minecraftlive.checked', checked.map(e => e ? '1' : '0').join(''))
+  ga('set', 'metric1', checked.filter(e => e).length)
 }
 
 document.querySelector('.new-seed').addEventListener('click', () => {
@@ -83,5 +84,6 @@ Math.seedrandom(localStorage.getItem('minecraftlive.seed') ?? generateSeed())
 
 const checkedString = localStorage.getItem('minecraftlive.checked') ?? '0'.repeat(25)
 let checked = checkedString.split('').map(c => c !== '0')
+setChecked()
 
 initGrid()
