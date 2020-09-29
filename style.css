@@ -110,6 +110,11 @@ button {
   content: none;
 }
 
+.cell.free-space::before {
+  content: 'FREE SPACE';
+  margin-bottom: 1em;
+}
+
 button::after,
 .cell::after {
   content: '';

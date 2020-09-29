@@ -64,7 +64,7 @@ function initGrid() {
       row.appendChild(cell)
       if (i === 12) {
         cell.className = 'cell free-space'
-        cell.innerHTML = 'FREE SPACE<br><BR>Jeb is awkward'
+        cell.innerHTML = 'Jeb is awkward'
         continue;
       } else if (i > 12) {
         i -= 1;
