@@ -62,7 +62,12 @@ function initGrid() {
         checked[i] = !checked[i]
         cell.className = checked[i] ? 'cell checked' : 'cell'
         setChecked()
-        ga('send', 'event', 'Grid', 'toggle-cell')
+        ga('send', 'event', 'Grid', 'toggle-cell', shuffledGoals[i])
+        if (checked[i]) {
+          ga('send', 'event', 'Grid', 'check-cell', shuffledGoals[i])
+        } else {
+          ga('send', 'event', 'Grid', 'uncheck-cell', shuffledGoals[i])
+        }
       })
     }
   }
