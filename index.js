@@ -41,6 +41,7 @@ const freeSpaces = [
   'Jeb is awkward',
   'Agnes is smiling non-stop',
   'Lydia is overly excited',
+  'Devs are wholesome',
 ]
 
 function generateSeed(length = 12) {
