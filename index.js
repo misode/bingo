@@ -1,35 +1,46 @@
 const essentialGoals = [
   'Fletching table use',
   'A Minecraft related song',
-  'History lesson (again)',
-  'Fake laughing',
-  'New new combat update',
-  'Cave update',
   'Board game talk',
-  'Animated villagers',
-  'Someone asks if there are capes',
-  'Colab with other brand',
+  'Epic Minecraft musical animation',
+  'Dream rigging the vote',
+  'New Dungeons DLC',
+  'The update will be split again',
+  'Someone saying they want all the mobs to win',
+  'New boss is introduced',
+  'Quadromorphic Endervision',
 ]
 
 const optionalGoals = [
-  '"We apologize for the inconvenience this year..."',
-  '"We\'re all in this together"',
-  '"Stay safe!"',
-  '"In these hard / troublesome times..."',
-  'NO mention of the word "corona" within 30 minutes',
+  'Someone asks if there are capes',
   'Marketplace victory lap',
-  'Non-Mojang creators webcam montage',
-  '*awkward silence*',
-  'People playing on their phone center-stage',
-  'New Dungeons DLC',
-  'A joke about masks',
+  'Content creators webcam montage',
+  'People playing on consoles center-stage',
   'Subtle Minecraft merch mention',
-  'Dab from staff',
-  'Among Us reference',
   'Fake audience',
   'Big Bedrock map',
-  'Lights go out, unplanned',
-  'Someone on camera not being "supposed to"',
+  'A cat steals the show',
+  'RTX advertisement',
+  'Minecraft Tiktoks',
+  'Fireworks in Minecraft',
+  'Accessibility in Minecraft',
+  'Concept art for the new update',
+  'Live reactions from Twitter',
+  'Someone advocates for the Glare',
+  'Looking back on Minecraft Earth',
+  'Minecraft being used by students',
+  '"That\'s an excellent question"',
+  'Creator tools are showcased',
+  'Transportation update',
+  'End update',
+  'More info about archeology',
+  'Jeb screams "nooooooo"',
+]
+
+const freeSpaces = [
+  'Jeb is awkward',
+  'Agnes is smiling non-stop',
+  'Lydia is overly excited',
 ]
 
 function generateSeed(length = 12) {
@@ -41,16 +52,17 @@ function generateSeed(length = 12) {
 }
 
 function fisherYates(originalArray) {
-  const array = originalArray.slice(0);
+  const array = originalArray.slice(0)
   for (let i = (array.length - 1); i > 0; i -= 1) {
     const randomIndex = Math.floor(Math.random() * (i + 1));
-    [array[i], array[randomIndex]] = [array[randomIndex], array[i]];
+    [array[i], array[randomIndex]] = [array[randomIndex], array[i]]
   }
-  return array;
+  return array
 }
 
 function initGrid() {
   const shuffledGoals = fisherYates(essentialGoals.concat(fisherYates(optionalGoals)).slice(0, 24))
+  const feeSpace = freeSpaces[Math.floor(Math.random() * freeSpaces.length)]
 
   const grid = document.querySelector('.grid')
   grid.innerHTML = ''
@@ -64,10 +76,10 @@ function initGrid() {
       row.appendChild(cell)
       if (i === 12) {
         cell.className = 'cell free-space'
-        cell.innerHTML = 'Jeb is awkward'
-        continue;
+        cell.innerHTML = feeSpace
+        continue
       } else if (i > 12) {
-        i -= 1;
+        i -= 1
       }
       cell.className = checked[i] ? 'cell checked' : 'cell'
       cell.textContent = shuffledGoals[i]
