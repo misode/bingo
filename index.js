@@ -1,6 +1,6 @@
 const essentialGoals = [
   'Fletching table use',
-  'A Minecraft related song',
+  'The Glare is eliminated round one',
   'Board game talk',
   'Epic Minecraft musical animation',
   'Dream rigging the vote',
