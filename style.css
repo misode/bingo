@@ -13,7 +13,7 @@ body {
   min-width: 300px;
   height: 100vh;
   overflow-x: hidden;
-  background: url('./assets/background.png') no-repeat center center fixed, #7CA8FF;
+  background: url('./assets/panorama2022.png') no-repeat center center fixed, #7CA8FF;
   background-size: cover;
   font-family: 'seven', sans-serif;
   font-size: 110%;
