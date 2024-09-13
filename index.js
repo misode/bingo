@@ -1,32 +1,31 @@
 const essentialGoals = [
-  'Fletching table use',
-  'Minecraft: the movie',
-  'Epic Minecraft musical animation',
-  'A phantom reference',
-  'Minecraft Dungeons farewell',
-  'Someone saying they want all the mobs to win',
-  'New boss is introduced',
-  'Crab wins the Mob Vote',
-  'Armadillo wins the Mob Vote',
-  'Penguin wins the Mob Vote',
 ]
 
 const optionalGoals = [
+  'Fletching table use',
+  'Epic Minecraft musical animation',
   'Someone asks if there are capes',
   'Marketplace victory lap',
   'People playing on consoles center-stage',
   'Subtle Minecraft merch mention',
-  'Big Bedrock map',
+  'Marketplace DLC announcement',
   'Awkward laugh',
   'Fireworks in Minecraft',
   'Accessibility in Minecraft',
-  'Concept art for the new update',
+  'Showcasing concept art',
   'Live reactions from X (Twitter)',
   'Minecraft being used by students',
-  'Inventory update',
-  'End update',
   'Jeb screams "nooooooo"',
   'Minecraft Legends gameplay',
+  'Something with Realms',
+  'Crossover with another game',
+  'Uncanny CGI set',
+  'Minecraft Lego',
+  'Cringe Minecraft Movie teaser',
+  'Looking back on the mob votes',
+  'Doing things "a little differently"',
+  'Highlighting community feedback',
+  'Another spin-off is announced',
 ]
 
 const freeSpaces = [
@@ -59,21 +58,20 @@ function initGrid() {
     const freeSpace = freeSpaces[Math.floor(Math.random() * freeSpaces.length)]
     shuffledGoals.splice(12, 0, freeSpace)
     let isValid = true
-    let count1 = 0
-    let count2 = 0
-    for (let i = 0; i < 5; i += 1) {
-      if (shuffledGoals[i + 5*i].endsWith('wins the Mob Vote')) count1 += 1
-      if (shuffledGoals[(4-i) + 5*i].endsWith('wins the Mob Vote')) count2 += 1
-      let count3 = 0
-      let count4 = 0
-      for (let j = 0; j < 5; j += 1) {
-        if (shuffledGoals[i + 5*j].endsWith('wins the Mob Vote')) count3 += 1
-        if (shuffledGoals[j + 5*i].endsWith('wins the Mob Vote')) count4 += 1
-      }
-      if (count3 > 1 || count4 > 1) isValid = false
-    }
-    console.log(count1, count2)
-    if (count1 > 1 || count2 > 1) isValid = false
+    // let count1 = 0
+    // let count2 = 0
+    // for (let i = 0; i < 5; i += 1) {
+    //   if (shuffledGoals[i + 5*i].endsWith('wins the Mob Vote')) count1 += 1
+    //   if (shuffledGoals[(4-i) + 5*i].endsWith('wins the Mob Vote')) count2 += 1
+    //   let count3 = 0
+    //   let count4 = 0
+    //   for (let j = 0; j < 5; j += 1) {
+    //     if (shuffledGoals[i + 5*j].endsWith('wins the Mob Vote')) count3 += 1
+    //     if (shuffledGoals[j + 5*i].endsWith('wins the Mob Vote')) count4 += 1
+    //   }
+    //   if (count3 > 1 || count4 > 1) isValid = false
+    // }
+    // if (count1 > 1 || count2 > 1) isValid = false
     attempts += 1
     if (isValid || attempts > 50) {
       console.log(`Generated card after ${attempts} attempts`)
@@ -93,9 +91,12 @@ function initGrid() {
       const cell = document.createElement('div')
       row.appendChild(cell)
       cell.classList.add('cell')
-      if (i === 12) cell.classList.add('free-space')
-      if (checked[i]) cell.classList.add('checked')
+      cell.classList.toggle('checked', checked[i])
       cell.textContent = label
+      if (i === 12) {
+        cell.classList.add('free-space')
+        continue
+      }
       cell.addEventListener('click', () => {
         checked[i] = !checked[i]
         cell.className = checked[i] ? 'cell checked' : 'cell'
