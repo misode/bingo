@@ -121,7 +121,7 @@ function setChecked() {
 
 document.querySelector('.new-seed').addEventListener('click', () => {
   Math.seedrandom(generateSeed())
-  checked = new Array(24).fill(false)
+  checked = new Array(25).fill(false)
   setChecked()
   ga('send', 'event', 'Grid', 'reset')
   initGrid()
