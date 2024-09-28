@@ -13,7 +13,7 @@ const optionalGoals = [
   'Fireworks in Minecraft',
   'Accessibility in Minecraft',
   'Showcasing concept art',
-  'Live reactions from X (Twitter)',
+  'Live reactions from social media',
   'Minecraft being used by students',
   'Jeb screams "nooooooo"',
   'Minecraft Legends gameplay',
