@@ -30,6 +30,8 @@ const optionalGoals = [
 
 const freeSpaces = [
   'Jeb is awkward',
+  'Agnes is excited',
+  'Devs are wholesome',
 ]
 
 function generateSeed(length = 12) {
